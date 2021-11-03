@@ -52,5 +52,17 @@ AuthorSchema
   return this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : '';
 })
 
+AuthorSchema
+.virtual('dob_update')
+.get(function() {
+  return this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toISODate() : '';
+})
+
+AuthorSchema
+.virtual('dod_update')
+.get(function() {
+  return this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toISODate() : '';
+})
+
 //Export model
 module.exports = mongoose.model('Author', AuthorSchema);
